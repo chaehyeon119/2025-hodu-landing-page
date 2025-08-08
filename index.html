@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HODU homepage</title>
+    <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="./styles/mobile.css"
+      media="screen and (max-width: 576px)"
+    />
+  </head>
+  <body>
+    <!-- 스킵 링크 -->
+
+    <!-- <header>: 구조적인 의미 (시멘틱 HTML)
+	•	role="banner": 보조기기에 전달되는 역할 정보 (접근성 향상)
+	•	이 둘을 같이 쓰면 사람 + 기계 모두에게 “여기가 사이트 헤더구나”*를 알리는 효과 -->
+    <header role="banner">
+      <div class="container">
+        <div class="logo">
+          <a href="/" aria-label="HODU 홈">
+            <img
+              src="./images/Logo-fin.svg"
+              alt="HODU"
+              width="130"
+              height="40"
+            />
+          </a>
+        </div>
+
+        <nav aria-label="주요 메뉴">
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/support">Support</a></li>
+            <li><a class="btn" href="/download">Download</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- 히어로 헤딩: 웹디자인에서 페이지나 섹션의 가장 눈에 띄는 제목 -->
+      <section id="download" aria-labelledby="hero-heading">
+        <div class="hero-container">
+          <div class="hero-text">
+            <h1 class="hero-heading">
+              Lorem Ipsum is simply<br />
+              dummy text of the printing and
+            </h1>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. <br> Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown
+            </p>
+            <p>
+              <button class="download">Download</button>
+            </p>
+          </div>
+
+          <!-- 장식 이미지: 정보 전달 없음 → 스크린리더 숨김 -->
+          <figure class="hero-photo" aria-hidden="true">
+            <img
+              src="./images/box-cat.png"
+              alt="박스를 머리에 쓰고 앉아 있는 줄무니 고양이"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <!-- 소개 섹션 -->
+      <section id="about" aria-labelledby="about-heading">
+        <div class="main-container">
+          <figure class="main-photo">
+            <img src="./images/img_4.png"" alt="침대 위에 누워있는 고양이"/>
+          </figure>
+
+          <article class="copy">
+            <h2 id="about-heading">
+              Lorem Ipsum is simply dummy text of the printing and dummy text
+            </h2>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 갤러리 / 피처 -->
+      <section aria-labelledby="gallery-heading">
+        <div class="gallery-container">
+          <h2 id="gallery-heading">dummy text of the printing and dummy</h2>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown
+          </p>
+          <ul class="gallery-photo" aria-describedby="gallery-desc">
+            <li>
+              <figure class="photo-card">
+                <img src="images/gallery-1.jpg" alt="캣타워 위의 고양이" />
+                <figcaption class="visually-hidden">
+                  캣타워 위의 고양이
+                </figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="card">
+                <img src="images/gallery-2.jpg" alt="벽을 바라보는 고양이" />
+                <figcaption class="visually-hidden">
+                  벽을 바라보는 고양이
+                </figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure class="card">
+                <img src="images/gallery-3.jpg" alt="바닥에 앉아있는 고양이" />
+                <figcaption class="visually-hidden">
+                  바닥에 앉아있는 고양이
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+
+          <p class="learn-more">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown Ipsum is simply dummy text of
+            the printing and typesetting industry.
+          </p>
+
+          <p>
+            <a class="btn" href="#" role="button">Learn More</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- 구독 폼 -->
+      <section aria-labelledby="subscribe-heading">
+        <div class="subscribe-container">
+          <div class="subscribe-text">
+            <h2 id="subscribe-title">Subscribe to our Blog post</h2>
+            <p id="subscribe-subtext">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+            </p>
+          </div>
+          <!-- 폼 버튼 -->
+          <form
+            class="subscribe-form"
+            action="#"
+            method="post"
+            aria-describedby="subscribe-help"
+          >
+            <label for="email" class="visually-hidden">이메일 주소</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              inputmode="email"
+              autocomplete="email"
+              placeholder="Enter your e-mail address"
+              required
+            />
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+
+        <!-- 배경용 이미지: 장식 처리 -->
+        <figure class="subscribe__bg" aria-hidden="true">
+          <img src="images/cta-bg-cat.jpg" alt="" />
+        </figure>
+      </section>
+    </main>
+
+    <footer role="content-info">
+      <div class="container-footer">
+        <!-- <a href="/" class="footer-logo" aria-label="HODU 홈"> -->
+          <!-- <img src="./images/Logo-fin.svg" alt="HODU" width="130" height="40" /> -->
+        </a>
+
+        <ul class="social" aria-label="소셜 미디어">
+          <li>
+            <a href="#" aria-label="블로그"
+              ><img src="images/icon-blog.svg" alt="" aria-hidden="true"
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="인스타그램"
+              ><img src="images/icon-instagram.svg" alt="" aria-hidden="true"
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="페이스북"
+              ><img src="images/icon-facebook.svg" alt="" aria-hidden="true"
+            /></a>
+          </li>
+          <li>
+            <a href="#" aria-label="유튜브"
+              ><img src="images/icon-youtube.svg" alt="" aria-hidden="true"
+            /></a>
+          </li>
+        </ul>
+
+        <p>
+          <!-- <a href="#top" class="to-top" aria-label="맨 위로 이동">▲</a> -->
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

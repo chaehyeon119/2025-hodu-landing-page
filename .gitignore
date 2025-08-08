@@ -1,0 +1,48 @@
+# 운영체제 파일
+# Editor and system files to ignore
+.vscode/
+.DS_Store
+*.DS_Store
+Thumbs.db         # Windows 이미지 미리보기 파일
+
+# IDE 설정 파일
+.idea/            # IntelliJ 설정 폴더
+.vscode/          # VS Code 설정 폴더
+*.sublime-*       # Sublime Text 설정 파일
+
+# 의존성 폴더
+node_modules/     # Node.js 패키지 폴더
+venv/             # Python 가상환경 폴더
+env/              # 환경 설정 폴더
+
+# 빌드 결과물
+dist/             # 배포용 폴더
+build/            # 빌드 폴더
+*.exe             # 실행 파일
+*.dll             # 라이브러리 파일
+*.class           # Java 컴파일 파일
+*.o               # C/C++ 컴파일 파일
+
+# 로그 파일
+*.log             # 모든 로그 파일
+npm-debug.log*    # npm 디버그 로그
+yarn-debug.log*   # yarn 디버그 로그
+
+# 환경 설정 파일
+.env              # 환경 변수 파일
+.env.local        # 로컬 환경 변수
+config.json       # 설정 파일
+
+# 캐시 파일
+.cache/           # 캐시 폴더
+*.cache           # 캐시 파일
+
+# 임시 파일
+*.tmp             # 임시 파일
+*.temp            # 임시 파일
+*~                # 백업 파일
+
+# 압축 파일
+*.zip
+*.tar.gz
+*.rar
