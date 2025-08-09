@@ -182,9 +182,7 @@ main {
   max-width: 415px;
   aspect-ratio: 415/766;
   display: block;
-  width: 415px; /* 컨테이너보다 크게 */
   height: auto;
-  transform: translateX(10%); /* 오른쪽 바깥으로 10% 밀기 */
   object-fit: cover;
 }
 
@@ -218,16 +216,17 @@ main {
 /* 왼쪽 이미지 카드 */
 #about .main-photo {
   flex: 0 1 520px;
+  max-width: 660px;
   /* 기본 520px, 공간 부족하면 약간 줄어듦 */
-  margin: 0;
 }
 #about .main-photo img {
   display: block;
-  width: 100%; /* 컨테이너에 맞춰 유동 */
-  max-width: 520px;
+  max-width: 660px;
+  width: 100%;
   height: auto;
   border-radius: 30px;
   box-shadow: 10px 10px 30px 0px #00000040;
+  aspect-ratio: 660/390;
 }
 
 /* 오른쪽 텍스트 칼럼 */
@@ -238,14 +237,17 @@ main {
 }
 #about .copy h2 {
   font-weight: 700;
-  font-size: 36px; /* 필요하면 40~42로 키워도 됨 */
+  /* 1.875vw: 36(최대값) / 1920(화면 너비) * 100 */
+  font-size: clamp(24px, 1.875vw, 36px);
   line-height: 1.25;
   margin-bottom: 40px;
   color: #000;
   max-width: 510px;
 }
 #about .copy p {
-  font-size: 16px;
+  /* 0.8333vw: 16(최대값) / 1920(화면 너비) * 100 */
+  font-size: clamp(14px, 0.833vw, 16px);
+
   line-height: 1.5;
   color: #000;
   margin: 0;
