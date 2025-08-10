@@ -214,8 +214,8 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
   width: 100%;
-  height: 100%;
 }
 
 /* ---------- About 섹션: 이미지 왼쪽 / 텍스트 오른쪽(누워있는 고양이)---------- */
@@ -229,16 +229,18 @@ main {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 110px; /* 이미지-텍스트 간격 */
-  padding: 80px 32rem; /* 양 옆 패딩(헤더와 맞춤) */
+  padding-block: clamp(40px, 6vw, 80px);
+  padding-inline: clamp(16px, 16.666vw, 320px);
+  gap: clamp(24px, 5vw, 110px); /* 2) gap도 반응형 */
   max-width: 1920px;
   margin: 0 auto;
   box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 /* 왼쪽 이미지 카드 */
 #about .main-photo {
-  flex: 0 1 520px;
+  flex: 0 0 clamp(327px, 34.375vw, 660px);
   max-width: 660px;
   /* 기본 520px, 공간 부족하면 약간 줄어듦 */
 }
