@@ -333,7 +333,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: flex-end; /* 버튼을 오른쪽 끝으로 */
-  margin-bottom: 40px;
+  margin-bottom: 90px;
 }
 
 .gallery-container-text .learn-more {
@@ -352,4 +352,114 @@ main {
   flex: 0 0 auto;
   margin-left: 52px;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 28px;
+  background: var(--orange);
+  color: #fff;
+  border: 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* <--------------------구독 폼 -----------------------> */
+
+#subscribe-heading {
+  position: relative;
+  /* 배경 이미지 위에 카드가 또렷하게 */
+  /* isolation: isolate; */
+}
+
+/* 네이비 카드 */
+.subscribe-container {
+  max-width: 1280px;
+  width: clamp(326px, 67.1875vw, 1280px);
+  height: clamp(200px, 10.4167vw, 326px);
+  margin: 0 auto;
+
+  /* 핵심: 가로 배치 + 가운데 정렬 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(20px, 7.45vw, 143px);
+
+  /* 카드 패딩/스타일 */
+  padding: clamp(36px, 2.5vw, 50px) clamp(32px, 3vw, 58px);
+  background-color: #263140;
+  border-radius: 30px;
+
+  color: #fff;
+  text-align: left;
+}
+
+/* 왼쪽 텍스트 묶음 */
+.subscribe-text {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  max-width: 491px;
+}
+
+.subscribe-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+/* 제목/설명: id 로 선택해야 함 */
+#subscribe-title {
+  font-weight: 700;
+  font-size: clamp(24px, 1.875vw, 36px);
+}
+#subscribe-subtext {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.subscribe-form {
+  width: 530px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 9999px;
+  padding: 10px 10px 10px 16px;
+  gap: 0;
+  padding-left: 28px;
+}
+
+.subscribe-icon {
+  margin: 0;
+  flex: 0 0 24px;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+}
+
+/* placehorder 적히는 부분 */
+.subscribe-form input {
+  flex: 1;
+  /* 메일 아이콘 <-> enter 사이의 간격 */
+  margin-left: 16px; /* 기본 margin 제거 */
+  padding: 0; /* 기본 padding 제거(원하면 padding-left만 4~8px) */
+  border: 0;
+  outline: 0;
+  font-size: 16px;
+  color: #263140;
+}
+
+/* 버튼 */
+.subscribe-form .btn,
+.subscribe-form .btn.btn-primary {
+  border: 0;
+  border-radius: 9999px;
+  padding: 12px 20px;
+  background: var(--orange);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
 }
