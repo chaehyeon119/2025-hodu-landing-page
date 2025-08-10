@@ -62,58 +62,63 @@ body {
   position: relative;
 }
 
-header .container {
-  position: fixed;
+/* 헤더 바 */
+/* sticky를 할지 fixed를 할지 고민했지만 자연스럽게 header 사라지는게 나을 것 같아서 sticky */
+header {
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 10.2rem;
-  background-color: var(--header-bg);
-  display: flex; /* 추가 */
-  align-items: center; /* 추가 */
-  justify-content: space-between; /* 추가 */
-  padding: 3.1rem 32rem;
+  background: var(--header-bg);
   z-index: 9999;
 }
 
-header ul {
+/* 안쪽 컨테이너: 폭은 100%, 좌우 패딩만 반응형 */
+header .container {
+  max-width: 1280px;
+  margin-inline: auto;
+
   display: flex;
   align-items: center;
-  justify-content: center;
+
+  /* 로고와 nav 사이 간격(반응형을 고려해서 넣었음/사이가 딱 붙어보이는 것이 싫음) */
+  gap: clamp(12px, 3vw, 40px);
+  padding-block: clamp(12px, 2.2vw, 32px);
+  padding-inline: clamp(16px, 4vw, 32px);
 }
-header nav li {
+
+/* 메뉴를 오른쪽으로 밀기 */
+header nav {
+  margin-left: auto;
+}
+
+header nav ul {
   display: flex;
   align-items: center;
+  gap: clamp(12px, 2.5vw, 30px); /* Home–About–Support 사이 간격 */
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-header nav li:not(:last-child) {
-  margin-right: 3rem;
-}
-
+/* Support ↔ Download만 추가 간격 */
 header nav li:nth-last-child(2) {
-  margin-right: 4rem;
+  margin-right: clamp(10px, 1.5vw, 40px);
 }
 
-header nav li a {
-  color: #000;
+header nav a {
   text-decoration: none;
+  color: #000;
   font-size: 1.6rem;
 }
-
-.btn {
-  display: flex;
+header nav .btn {
+  display: inline-flex;
   width: 14rem;
   height: 5rem;
-  background-color: var(--orange);
-  border: none;
   border-radius: 4rem;
+  background: var(--orange);
+  color: #fff;
+  font-weight: 700;
   align-items: center;
   justify-content: center;
-  color: var(--white);
-  font-weight: 700;
 }
 
 main {
@@ -128,23 +133,31 @@ main {
 }
 
 .hero-container {
-  /* 고정 헤더(102px) 고려해서 위 여백 넉넉히 넣음 */
-  padding: 120px 32rem 0;
+  max-width: 1280px;
+  margin-inline: auto;
+  box-sizing: border-box;
+
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 131px; /* 텍스트-이미지 사이 간격 */
+  gap: clamp(32px, 4vw, 131px);
+
+  padding-block: 12px 0;
+  padding-inline: clamp(16px, 4vw, 32px);
 }
 
 /* 왼쪽 텍스트 칼럼 */
 .hero-text {
-  flex: 1 1 0; /* 왼쪽은 유동 폭 */
+  flex: 1 1 300px;
   text-align: left;
-  min-width: 0; /* 긴 단어 줄바꿈 안전장치 */
+  min-width: 0;
 }
 
 .hero-text .hero-heading {
   max-width: 734px;
+  /* 중간값 계산:734 ÷ 1920 × 100 = 38.23vw */
+  width: clamp(264px, 38.24vw, 734px);
   /* line-height 줄간격으로 높이 맞추기: 48px(폰트 크기) *1.25 = 약 120px */
   line-height: 1.25;
   font-size: clamp(24px, 3.5vw, 48px);
@@ -155,9 +168,10 @@ main {
 
 .hero-text p {
   max-width: 439px;
+  width: clamp(280px, 18.703vw, 439px);
   color: #000;
   margin: 0 0 40px;
-  font-size: 16px;
+  font-size: clamp(14px, 0.833vw, 16px);
   line-height: 1.3;
 }
 
@@ -186,6 +200,9 @@ main {
 
 .hero-photo img {
   max-width: 415px;
+  /* 359.5px ÷ 19.2px ≈ 18.703vw */
+  width: clamp(197px, 15.94vw, 415px);
+  min-width: 326px;
   aspect-ratio: 415/766;
   display: block;
   height: auto;
@@ -201,7 +218,7 @@ main {
   height: 100%;
 }
 
-/* ---------- About 섹션: 이미지 왼쪽 / 텍스트 오른쪽 ---------- */
+/* ---------- About 섹션: 이미지 왼쪽 / 텍스트 오른쪽(누워있는 고양이)---------- */
 #about {
   background: #fff;
 }
@@ -228,7 +245,7 @@ main {
 #about .main-photo img {
   display: block;
   max-width: 660px;
-  width: 100%;
+  width: clamp(327px, 34.375vw, 660px);
   height: auto;
   border-radius: 30px;
   box-shadow: 10px 10px 30px 0px #00000040;
