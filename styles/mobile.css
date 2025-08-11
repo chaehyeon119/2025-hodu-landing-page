@@ -158,12 +158,7 @@
     /* 스크롤 주인공 */
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-
-    /* 텍스트들과 같은 좌우 여백 맞추기 */
-    padding-left: 32px;
-    padding-right: 32px;
-    /* padding이 두 번 들어가 보이지 않게 균형 */
-    margin-left: -32px;
+    /* 오른쪽 여백 없게 하기 위해서 */
     margin-right: -32px;
     margin-bottom: 60px;
 
@@ -218,7 +213,43 @@
   .scroll-top-btn {
     display: none;
   }
+  .subscribe-form {
+    flex-direction: column; /* ← 핵심 */
+    align-items: stretch;
+    gap: 20px;
+    background: transparent; /* 입력창이 자체 배경 갖도록 */
+    padding: 0;
+    border-radius: 0;
+    width: 100%;
+  }
 
+  /* 기존 아이콘 숨기고, 입력창 배경아이콘으로 대체 */
+  .subscribe-icon {
+    display: none;
+  }
+
+  .subscribe-form input {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 9999px;
+    padding: 14px 16px 14px 48px; /* 아이콘 자리 */
+    background: #fff url("../images/mail.svg") no-repeat 16px center;
+    background-size: 20px;
+    font-size: 14px;
+    color: #263140;
+  }
+
+  .subscribe-btn {
+    align-self: flex-start; /* 버튼을 왼쪽 정렬 */
+    padding: 12px 24px;
+    border-radius: 28px;
+    background: var(--orange);
+    color: #fff;
+    border: 0;
+    font-weight: 700;
+    cursor: pointer;
+  }
   /* 모달 내용 */
   .modal-content {
     position: absolute;

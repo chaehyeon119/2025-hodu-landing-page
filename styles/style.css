@@ -337,7 +337,7 @@ main {
   flex-direction: row;
   gap: 72px;
   align-items: center;
-  margin-bottom: 90px;
+  margin: 0 320px 90px;
 }
 
 .cat-photo img {
@@ -709,5 +709,39 @@ footer {
     object-fit: contain; /* 잘림 방지 */
     min-width: 0; /* 데스크톱 min-width 영향 제거 */
     display: block;
+  }
+}
+
+/* subscribe 섹션: 660px 이하에서 모두 가운데 정렬 */
+@media screen and (max-width: 660px) {
+  .subscribe-container {
+    display: flex;
+    flex-direction: column;
+    /* 안에 있는 요소들이 같은 너비를 가지게 함 */
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  /* 왼쪽 정렬: 텍스트 */
+  .subscribe-text {
+    text-align: left;
+    align-items: flex-start;
+  }
+  #subscribe-title {
+    text-align: left;
+  }
+
+  /* 가운데 정렬: input */
+  .subscribe-form input {
+    display: block;
+    margin: 0 auto; /* 가운데 */
+    width: 100%;
+  }
+
+  /* 오른쪽 정렬: 버튼 */
+  .subscribe-btn {
+    display: block;
+    /* 오른쪽 정렬 */
+    margin-left: auto;
   }
 }
