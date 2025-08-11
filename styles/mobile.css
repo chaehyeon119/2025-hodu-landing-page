@@ -1,5 +1,13 @@
 /* ===== 모바일 전용 ===== */
 @media (max-width: 576px) {
+  :root {
+    --orange: #d97652;
+    --white: #fff;
+    --subscribe-navy: #263140;
+    --header-bg: #f2e9d8;
+    --font-main: "Spoqa Han Sans Neo", sans-serif;
+    --placeholder-gray: #767676;
+  }
   /* 메뉴는 숨김, 햄버거는 보임 */
   header nav {
     display: none;
@@ -144,6 +152,7 @@
     /* padding이 두 번 들어가 보이지 않게 균형 */
     margin-left: -32px;
     margin-right: -32px;
+    margin-bottom: 60px;
 
     /* 스크롤 스냅(옵션): 카드 단위로 착! 붙게 */
     scroll-snap-type: x mandatory;
@@ -167,10 +176,101 @@
   .gallery-container-text {
     display: flex;
     flex-direction: column;
-    padding-top: 16px;
   }
   .gallery-container-text .btn {
     align-self: flex-end;
     margin-top: 12px;
+  }
+
+  /*  */
+  #subscribe {
+    position: relative;
+    /* 배경 높이 확보(배경높이(340px) + 카드 높이 절반) */
+  }
+
+  .subscribe-bg {
+    position: absolute;
+    height: 240px; /* subscribe-container 높이의 끝에서 36px 위 */
+  }
+
+  .scroll-top-btn {
+    display: none;
+  }
+
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("../images/modal.png");
+    border-radius: 30px;
+    width: 300px;
+    height: 300px;
+    aspect-ratio: 1/1;
+    text-align: center;
+    box-shadow: 0px 0px 30px 0px #00000033;
+  }
+
+  /* <---------푸터 -----> */
+  .container-footer {
+    display: grid;
+    /* 왼쪽은 가능한 넓게 차지, 오른쪽 칸은 내용 크기에 맞춰서 */
+    grid-template-columns: 1fr auto;
+    /* 왼쪽 칸과 오른쪽 칸의 간격 */
+
+    column-gap: 89px;
+
+    justify-items: start;
+    padding: 30px 20px 32px;
+  }
+
+  .container-footer .footer-logo {
+    /*  첫번째 줄 왼쪽 칸 */
+    grid-column: 1;
+    grid-row: 1;
+    align-self: left;
+  }
+
+  .container-footer .footer-logo img {
+    display: block;
+    width: 112px;
+  }
+  .container-footer .social {
+    /* 두번째 줄 왼쪽 칸 */
+    grid-column: 1;
+    grid-row: 2;
+    /* 한줄에 나란히 매치 */
+    display: flex;
+    /* 아이콘 간의 간격 */
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 176px;
+    align-items: center;
+  }
+  .container-footer .social img {
+    width: 32px;
+    height: 32px;
+  }
+  .container-footer .mobile-menu {
+    grid-column: 2;
+    /* 오른쪽 칸에서 첫번째 줄부터  두번째 줄까지 차지*/
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    /* 메뉴 항목 사이 간격 */
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    justify-content: space-between;
+  }
+
+  .container-footer .mobile-menu a {
+    color: var(--placeholder-gray);
+    text-decoration: none;
+    font-size: 14px;
   }
 }

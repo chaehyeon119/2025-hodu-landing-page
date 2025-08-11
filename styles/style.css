@@ -358,7 +358,7 @@ main {
 }
 
 .gallery-container-text .learn-more {
-  flex: 1 1 auto;
+  /* flex: 1 1 auto; */
   max-width: 739px;
   /* clamp값 중간값 수정하기 */
   width: clamp(326px, 0, 739px);
@@ -599,13 +599,17 @@ footer {
 }
 
 .container-footer {
-  width: clamp(390px, 60.15625vw, 1920px);
+  width: clamp(390px, 66.146vw, calc(1920px - 650px));
 
   margin-inline: auto; /* 가운데 배치 */
   height: 160px;
 
   display: flex;
   align-items: center;
+}
+
+.mobile-menu {
+  display: none;
 }
 
 /* 로고는 왼쪽, 소셜은 오른쪽 */

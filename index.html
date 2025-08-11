@@ -154,7 +154,7 @@
             </p>
           </div>
 
-          <!-- 버튼은 form 안(네가 올려준 구조 유지) -->
+          <!-- 버튼은 form 안 -->
           <form
             class="subscribe-form"
             action="#"
@@ -179,6 +179,7 @@
 
         <!-- 배경 이미지 -->
         <figure class="subscribe-bg" aria-hidden="true">
+          <!-- 장식성의 이미지이므로 div 태그로 바꾸고 background 속성으로 넣기 -->
           <img
             src="./images/img_5.png"
             alt="눈을 동그랗게 뜨고 있는 고양이를 아래에서 올려다 보는 모습"
@@ -216,9 +217,14 @@
             /></a>
           </li>
         </ul>
+        <ul class="mobile-menu">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
       </div>
 
-      <!-- 다른 모달(블로그용)은 그대로 -->
       <div class="modal" id="myModal">
         <div
           class="modal-content"
@@ -244,9 +250,7 @@
           role="dialog"
           aria-modal="true"
           aria-labelledby="mobileMenuTitle"
-        >
-          <a href="#" class="menu-close" aria-label="닫기">×</a>
-        </div>
+        ></div>
       </div>
     </footer>
 
