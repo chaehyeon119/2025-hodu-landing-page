@@ -123,13 +123,13 @@ header nav .btn {
 
 main {
   width: 100%;
-  height: 798px;
-  background-color: var(--header-bg);
 }
 
 /* 히어로 섹션 배경 */
 #download {
   background: var(--header-bg);
+  /* height: 798px; */
+  background-color: var(--header-bg);
 }
 
 .hero-container {
@@ -378,7 +378,6 @@ main {
   width: clamp(326px, 67.1875vw, 1280px);
   height: clamp(200px, 10.4167vw, 326px);
   margin: 0 auto;
-
   /* 핵심: 가로 배치 + 가운데 정렬 */
   display: flex;
   align-items: center;
@@ -392,8 +391,13 @@ main {
 
   color: #fff;
   text-align: left;
-}
 
+  position: relative;
+  z-index: 100;
+
+  flex-direction: row;
+  justify-content: space-between;
+}
 /* 왼쪽 텍스트 묶음 */
 .subscribe-text {
   display: flex;
@@ -403,11 +407,6 @@ main {
   max-width: 491px;
 }
 
-.subscribe-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 /* 제목/설명: id 로 선택해야 함 */
 #subscribe-title {
   font-weight: 700;
@@ -462,4 +461,54 @@ main {
   color: #fff;
   font-weight: 700;
   cursor: pointer;
+}
+
+.subscribe-container {
+  position: relative;
+  z-index: 1;
+}
+#subscribe {
+  position: relative;
+  padding-bottom: 340px; /* 배경 높이만큼 공간 예약 */
+}
+
+.subscribe-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 340px; /* 배경 띠 높이 고정 */
+  transform: none; /* translateY 제거 */
+  z-index: 0;
+}
+.subscribe-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* <-----footer-----------------------> */
+/* 1) 바깥 footer는 block으로 */
+footer {
+  display: block;
+}
+
+.container-footer {
+  max-width: 1280px; /* 컨테이너 폭 제한 */
+  width: 100%;
+  margin-inline: auto; /* 가운데 배치 */
+  height: 160px;
+
+  display: flex;
+  align-items: center;
+}
+
+/* 로고는 왼쪽, 소셜은 오른쪽 */
+.container-footer .social {
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  /* 오른쪽 끝 정렬 */
+  margin-left: auto;
+  list-style: none;
 }
