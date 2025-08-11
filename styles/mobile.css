@@ -102,6 +102,16 @@
     align-self: center;
   }
 
+  .hero-photo img {
+    /* 가로만 유동, 세로는 비율로 자동 */
+    width: clamp(197px, calc(197px + 11.354vw), 415px);
+    height: auto; /* ← 세로 고정 해제 */
+    aspect-ratio: 415 / 766; /* 비율 유지 (있으면 좋음) */
+    object-fit: contain; /* 부모 안에서 잘리지 않게 */
+    min-width: 0; /* 데스크톱에서 준 min-width 해제 */
+    max-height: 80vh; /* 선택: 화면 높이 넘지 않게 안전장치 */
+  }
+
   /* <--- 누워 있는 고양이(소개 섹션) --------------> */
   /* 소개 섹션 + 갤러리 좌우 패딩 */
   #about .main-container,
@@ -182,7 +192,8 @@
     margin-top: 12px;
   }
 
-  /*  */
+  /*  모달 내용*/
+
   #subscribe {
     position: relative;
     /* 배경 높이 확보(배경높이(340px) + 카드 높이 절반) */
@@ -197,18 +208,45 @@
     display: none;
   }
 
+  /* 모달 내용 */
   .modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-image: url("../images/modal.png");
+    /* 이미지 요청 드려서 수정하기 */
+    background-image: url("../images/modal.png") center / cover;
     border-radius: 30px;
     width: 300px;
     height: 300px;
     aspect-ratio: 1/1;
     text-align: center;
     box-shadow: 0px 0px 30px 0px #00000033;
+  }
+
+  .modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--orange);
+    margin-top: 126px;
+    margin-bottom: 10px;
+  }
+
+  .modal-text {
+    font-size: 14px;
+    margin: 0 50px 28px;
+  }
+  .modal-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border-radius: 28px;
+    background: var(--orange);
+    color: #fff;
+    border: 0;
+    font-weight: 700;
+    cursor: pointer;
   }
 
   /* <---------푸터 -----> */
