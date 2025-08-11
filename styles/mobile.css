@@ -71,5 +71,106 @@
 
   .hero-heading {
     text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .hero-container {
+    display: flex; /* 이미 flex라면 유지됨 */
+    flex-direction: column; /* 위아래로 쌓기 */
+    align-items: center; /* 가로(교차축) 가운데 */
+    justify-content: center; /* 세로(주축) 가운데 */
+    text-align: center; /* 안의 텍스트들도 가운데 */
+    gap: 20px; /* 텍스트와 이미지 간 간격 */
+    padding-block: 40px 0;
+  }
+
+  .hero-text {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .hero-photo {
+    margin: 0;
+    align-self: center;
+  }
+
+  /* <--- 누워 있는 고양이(소개 섹션) --------------> */
+  /* 소개 섹션 + 갤러리 좌우 패딩 */
+  #about .main-container,
+  .gallery-container {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 0;
+  }
+
+  #about .copy h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .main-container {
+    margin: 0;
+  }
+  .main-photo img {
+    margin-bottom: 40px;
+  }
+
+  #about .copy p {
+    font-size: 14px;
+    margin-bottom: 60px;
+  }
+
+  .gallery-container {
+    display: block; /* 데스크톱 flex를 무효화 */
+    padding-left: 32px;
+    padding-right: 32px;
+    overflow: visible; /* ← 여기! 더 이상 컨테이너가 안 움직이게 */
+  }
+  .gallery-container p {
+    margin-bottom: 40px;
+  }
+  /* 이미지 리스트(ul)만 가로 스크롤 */
+  .gallery-photo {
+    display: flex;
+    flex-wrap: nowrap; /* 한 줄로 */
+    gap: 20px;
+
+    /* 스크롤 주인공 */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    /* 텍스트들과 같은 좌우 여백 맞추기 */
+    padding-left: 32px;
+    padding-right: 32px;
+    /* padding이 두 번 들어가 보이지 않게 균형 */
+    margin-left: -32px;
+    margin-right: -32px;
+
+    /* 스크롤 스냅(옵션): 카드 단위로 착! 붙게 */
+    scroll-snap-type: x mandatory;
+  }
+
+  /* 각 항목/이미지: 줄어들지 않게 + 스냅 기준 */
+  .gallery-photo li {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    list-style: none;
+  }
+  .gallery-photo img {
+    display: block;
+    width: 260px; /* 카드 폭 */
+    height: auto;
+    border-radius: 12px;
+    flex-shrink: 0; /* 줄어들지 않게 */
+  }
+
+  /* 설명 + 버튼 레이아웃은 그대로(스크롤 영향 X) */
+  .gallery-container-text {
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+  }
+  .gallery-container-text .btn {
+    align-self: flex-end;
+    margin-top: 12px;
   }
 }
