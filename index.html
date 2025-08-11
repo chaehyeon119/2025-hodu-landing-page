@@ -28,7 +28,12 @@
         </div>
 
         <!-- 햄버거 버튼: 모바일에서만 표시 -->
-        <a href="#menu-modal" class="nav-toggle" aria-label="메뉴 열기">
+        <a
+          href="#menu-modal"
+          class="nav-toggle"
+          id="openMenuBtn"
+          aria-label="메뉴 열기"
+        >
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -252,7 +257,15 @@
           role="dialog"
           aria-modal="true"
           aria-labelledby="mobileMenuTitle"
-        ></div>
+        >
+          <a
+            href="#"
+            class="menu-close"
+            id="closeMenuBtn"
+            aria-label="메뉴 닫기"
+            >×</a
+          >
+        </div>
       </div>
     </footer>
 

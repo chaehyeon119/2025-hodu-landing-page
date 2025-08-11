@@ -114,11 +114,13 @@
 
   /* <--- 누워 있는 고양이(소개 섹션) --------------> */
   /* 소개 섹션 + 갤러리 좌우 패딩 */
+  /* 자간을 넓혀서 맞췄는데 저게 맞으려나 */
   #about .main-container,
   .gallery-container {
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 0;
+    letter-spacing: 0.4px;
   }
 
   #about .copy h2 {
@@ -142,6 +144,7 @@
     padding-left: 32px;
     padding-right: 32px;
     overflow: visible; /* ← 여기! 더 이상 컨테이너가 안 움직이게 */
+    width: 100%;
   }
   .gallery-container p {
     margin-bottom: 40px;
@@ -186,6 +189,14 @@
   .gallery-container-text {
     display: flex;
     flex-direction: column;
+    margin: 0 0 100px;
+    width: 100%;
+  }
+
+  .gallery-container-text p {
+    text-align: justify; /* 양쪽 정렬 */
+    width: 100%; /* 부모 너비 꽉 채움 */
+    max-width: 100%; /* 혹시 데스크톱 제한이 있으면 해제 */
   }
   .gallery-container-text .btn {
     align-self: flex-end;
