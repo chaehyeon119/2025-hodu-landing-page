@@ -1,5 +1,5 @@
 /* 확인 필요한 점 */
-/* 1. figurecaption 넣을까 말까 */
+/* 1. figurecaption 넣을까 말까 => 넣기*/
 
 /* README.md에 쓸 말 */
 /* 1. clamp: 폰트가 넘치는 문제를 해결해줌 */
@@ -121,6 +121,26 @@ header nav .btn {
   font-weight: 700;
   align-items: center;
   justify-content: center;
+}
+
+/* 기본: 데스크톱에선 햄버거 숨김 */
+.nav-toggle {
+  display: none;
+  width: 32px;
+  height: 32px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  margin-left: auto;
+  text-decoration: none;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #263140;
+  border-radius: 1px;
 }
 
 main {
@@ -369,36 +389,40 @@ main {
 
 #subscribe-heading {
   position: relative;
-  /* 배경 이미지 위에 카드가 또렷하게 */
-  /* isolation: isolate; */
 }
 
-/* 네이비 카드 */
+/* <------- 구독 카드 ---------> */
 .subscribe-container {
+  position: absolute; /* 겹쳐 보이게는 유지 */
+  left: 50%;
+  top: calc(100% - 340px);
+  transform: translate(-50%, -50%);
+  z-index: 100;
+
   max-width: 1280px;
   width: clamp(326px, 67.1875vw, 1280px);
-  height: clamp(200px, 10.4167vw, 326px);
-  margin: 0 auto;
-  /* 핵심: 가로 배치 + 가운데 정렬 */
-  display: flex;
 
+  /* 높이는 '고정' 말고 '최소 높이'만 줘서 내용이 많아지면 늘어나게 */
+  min-height: clamp(200px, 10.4167vw, 326px);
+
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(20px, 7.45vw, 143px);
 
-  /* 카드 패딩/스타일 */
+  /* 공간이 부족하면 다음 줄로 내려가게 */
+  flex-wrap: wrap;
+
+  /* 가로 간격은 너무 커지지 않게 상한 낮춤 */
+  column-gap: clamp(20px, 4vw, 60px);
+  row-gap: 20px;
+
   padding: clamp(36px, 2.5vw, 50px) clamp(32px, 3vw, 58px);
   background-color: #263140;
   border-radius: 30px;
-
   color: #fff;
   text-align: left;
 
-  position: relative;
-  z-index: 100;
-
-  flex-direction: row;
-  justify-content: space-between;
+  overflow: hidden;
 }
 /* 왼쪽 텍스트 묶음 */
 .subscribe-text {
@@ -412,7 +436,8 @@ main {
 #subscribe-title {
   font-weight: 700;
   font-size: clamp(24px, 1.875vw, 36px);
-  width: clamp(194px, 24.270833vw, 466px);
+  width: auto;
+  max-width: 466px;
 }
 
 #subscribe-subtext {
@@ -422,8 +447,9 @@ main {
 }
 
 .subscribe-form {
-  width: clamp(262px, 27.6041667vw, 530px);
-  height: 60px;
+  width: 100%;
+  max-width: 530px;
+  height: auto;
   display: flex;
   align-items: center;
   background: #fff;
@@ -431,6 +457,8 @@ main {
   padding: 10px 10px 10px 16px;
   gap: 0;
   padding-left: 28px;
+  flex-wrap: wrap;
+  position: relative;
 }
 
 .subscribe-icon {
@@ -454,9 +482,9 @@ main {
 }
 
 /* 버튼 */
-.subscribe-form .btn {
+.subscribe-btn {
   border: 0;
-  border-radius: 9999px;
+  border-radius: 40px;
   padding: 12px 20px;
   background: var(--orange);
   color: #fff;
@@ -532,32 +560,6 @@ main {
   min-height: calc(340px + (clamp(200px, 10.4167vw, 326px) / 2));
 }
 
-/* 네이비 카드 */
-.subscribe-container {
-  position: absolute;
-  left: 50%;
-  /* 카드의 중앙을 배경 윗선에 맞추기(부모 아래 끝에서 340px위로 올라가기) */
-  top: calc(100% - 340px);
-  /* 여기서 -50%로 중앙 맞추고, 추가로 위로 올림(30px) */
-  transform: translate(-50%, -50%);
-  z-index: 100;
-
-  max-width: 1280px;
-  width: clamp(326px, 67.1875vw, 1280px);
-  height: clamp(200px, 10.4167vw, 326px);
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* 왼쪽 텍스트랑 오른쪽 폼과의 간격 조절 */
-  gap: clamp(20px, 7.45vw, 143px);
-
-  padding: clamp(36px, 2.5vw, 50px) clamp(32px, 3vw, 58px);
-  background-color: #263140;
-  border-radius: 30px;
-  color: #fff;
-}
-
 /* 배경 이미지 */
 .subscribe-bg {
   position: absolute;
@@ -616,4 +618,41 @@ footer {
   /* 오른쪽 끝 정렬 */
   margin-left: auto;
   list-style: none;
+}
+
+/* ====== About 섹션: 좁아지면 세로로 쌓기 (이미지 위 / 텍스트 아래) ====== */
+@media (max-width: 900px) {
+  /* 가로 → 세로 */
+  #about .main-container {
+    flex-direction: column;
+    align-items: stretch; /* 자식들이 가로폭 100% 사용 */
+    gap: 24px;
+    padding-inline: 16px; /* 좌우 여백 살짝 줄여줌 */
+  }
+
+  /* 이미지 카드: 가로 제한 해제하고 꽉 차게 */
+  #about .main-photo {
+    flex: 0 0 auto; /* 고정 너비 해제 */
+    max-width: 100%;
+  }
+  #about .main-photo img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* 텍스트 칼럼: 가로 제한 해제하고 읽기 좋게 */
+  #about .copy {
+    max-width: none; /* 508px/510px 같은 제한 해제 */
+    text-align: left; /* 필요하면 center로 바꿔도 OK */
+  }
+  #about .copy h2 {
+    max-width: none;
+    font-size: 28px; /* 너무 쪼그라들지 않게 하드 바닥값 */
+    line-height: 1.3;
+  }
+  #about .copy p {
+    max-width: none;
+    font-size: 16px; /* 본문 글자도 바닥값 16px로 고정 */
+    line-height: 1.5;
+  }
 }

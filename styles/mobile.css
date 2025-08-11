@@ -1,0 +1,75 @@
+/* ===== 모바일 전용 ===== */
+@media (max-width: 576px) {
+  /* 메뉴는 숨김, 햄버거는 보임 */
+  header nav {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+  }
+
+  /* 헤더 컨테이너 기준으로 정렬이 먹도록 */
+  header .container {
+    position: relative;
+    padding: 24px 20px;
+  }
+
+  header .logo {
+    width: 92px;
+    height: 28px;
+  }
+
+  /* ===== CSS-only 모달 (:target) ===== */
+  .menu-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: none; /* 기본 숨김 */
+    z-index: 10000;
+  }
+
+  /* #menu-modal 이 URL에 타겟되면 보임 */
+  .menu-modal:target {
+    display: block;
+  }
+
+  /* 모달 박스 */
+  .menu-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 400px;
+    height: 820px;
+    background: #fff url("../images/menu-tab.png") right center / 299px 100%
+      no-repeat;
+
+    /* 왼쪽은 101px 영역 확보, 오른쪽은 이미지(299px)와 겹치지 않도록 패딩 */
+    padding-left: 101px;
+    padding-right: 299px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+
+  /* 닫기 버튼 */
+  .menu-close {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    font-size: 28px;
+    line-height: 1;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .hero-heading {
+    text-align: center;
+  }
+}

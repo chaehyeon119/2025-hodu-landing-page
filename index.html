@@ -15,9 +15,6 @@
   <body>
     <!-- 스킵 링크 -->
 
-    <!-- <header>: 구조적인 의미 (시멘틱 HTML)
-	•	role="banner": 보조기기에 전달되는 역할 정보 (접근성 향상)
-	•	이 둘을 같이 쓰면 사람 + 기계 모두에게 “여기가 사이트 헤더구나”*를 알리는 효과 -->
     <header role="banner">
       <div class="container">
         <div class="logo">
@@ -31,6 +28,13 @@
           </a>
         </div>
 
+        <!-- 햄버거 버튼: 모바일에서만 표시 -->
+        <a href="#menu-modal" class="nav-toggle" aria-label="메뉴 열기">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+
         <nav aria-label="주요 메뉴">
           <ul>
             <li><a href="/">Home</a></li>
@@ -43,25 +47,25 @@
     </header>
 
     <main id="main">
-      <!-- 히어로 헤딩: 웹디자인에서 페이지나 섹션의 가장 눈에 띄는 제목 -->
+      <!-- 히어로 -->
       <section id="download" aria-labelledby="hero-heading">
         <div class="hero-container">
           <div class="hero-text">
-            <h1 class="hero-heading">
+            <h1 class="hero-heading" id="hero-heading">
               Lorem Ipsum is simply<br />
               dummy text of the printing and
             </h1>
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. <br> Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown
+              industry. <br />
+              Lorem Ipsum has been the industry's standard dummy text ever since
+              the 1500s, when an unknown
             </p>
             <p>
               <button class="download">Download</button>
             </p>
           </div>
 
-          <!-- 장식 이미지: 정보 전달 없음 → 스크린리더 숨김 -->
           <figure class="hero-photo" aria-hidden="true">
             <img
               src="./images/box-cat.png"
@@ -75,55 +79,65 @@
       <section id="about" aria-labelledby="about-heading">
         <div class="main-container">
           <figure class="main-photo">
-            <img src="./images/img_4.png" alt="침대 위에 누워있는 고양이"/>
+            <img src="./images/img_4.png" alt="침대 위에 누워있는 고양이" />
           </figure>
 
           <article class="copy">
             <h2 id="about-heading">
-              Lorem Ipsum is simply <br> dummy text of the printing <br> and dummy text
+              Lorem Ipsum is simply <br />
+              dummy text of the printing <br />
+              and dummy text
             </h2>
             <p>
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.
             </p>
           </article>
         </div>
       </section>
 
-      <!-- 갤러리 / 피처 -->
+      <!-- 갤러리 -->
       <section aria-labelledby="gallery-heading">
         <div class="gallery-container">
-          <h2 id="gallery-heading">dummy text</strong> of the printing and dummy</h2>
+          <h2 id="gallery-heading">dummy text of the printing and dummy</h2>
           <p>
-            Lorem Ipsum is simply <strong style="color: var(--orange);">dummy text </strong>of the printing and typesetting
-            industry. <br>Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown
+            Lorem Ipsum is simply
+            <strong style="color: var(--orange)">dummy text</strong> of the
+            printing and typesetting industry. <br />Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown
           </p>
           <ul class="gallery-photo" aria-describedby="gallery-desc">
             <li>
               <figure class="cat-photo">
                 <img src="./images/img_1.png" alt="캣타워 위의 고양이" />
-
               </figure>
             </li>
             <li>
               <figure class="cat-photo">
-                <img src="./images/img_2.png" alt="바닥에 앉아 벽을 바라보는 고양이" />
+                <img
+                  src="./images/img_2.png"
+                  alt="바닥에 앉아 벽을 바라보는 고양이"
+                />
               </figure>
             </li>
             <li>
               <figure class="cat-photo">
-                <img src="./images/img_3.png" alt="바닥에 앉아 카메라를 보는 고양이" />
+                <img
+                  src="./images/img_3.png"
+                  alt="바닥에 앉아 카메라를 보는 고양이"
+                />
               </figure>
             </li>
           </ul>
-          
-        <div class="gallery-container-text">
-          <p class="learn-more">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry.<br>Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown<br> Ipsum is simply dummy text of
-            the printing and typesetting industry.
-          </p> 
+
+          <div class="gallery-container-text">
+            <p class="learn-more">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry.<br />Lorem Ipsum has been the industry's standard dummy
+              text ever since the 1500s, when an unknown<br />
+              Ipsum is simply dummy text of the printing and typesetting
+              industry.
+            </p>
             <a class="btn" href="#" role="button">Learn More</a>
           </div>
         </div>
@@ -136,18 +150,20 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             <h2 id="subscribe-title">Subscribe to our Blog post</h2>
             <p id="subscribe-subtext">
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.<br>Lorem Ipsum has been the industry's standard dummy text
+              industry.<br />Lorem Ipsum has been the industry's standard dummy
+              text
             </p>
           </div>
-          <!-- 폼 버튼 -->
+
+          <!-- 버튼은 form 안(네가 올려준 구조 유지) -->
           <form
             class="subscribe-form"
             action="#"
             method="post"
             aria-describedby="subscribe-help"
           >
-          <img src="./images/mail.svg" alt="" class="subscribe-icon" />
-            
+            <img src="./images/mail.svg" alt="" class="subscribe-icon" />
+
             <input
               id="email"
               name="email"
@@ -157,16 +173,19 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               placeholder="Enter your e-mail address"
               required
             />
-            <button type="button" class="btn btn-primary" id="openModalBtn">Subscribe</button>
+
+            <button type="button" class="subscribe-btn">Subscribe</button>
           </form>
         </div>
 
-        <!-- 배경용 이미지: 장식 처리 -->
+        <!-- 배경 이미지 -->
         <figure class="subscribe-bg" aria-hidden="true">
-          <img src="./images/img_5.png" alt="눈을 동그랗게 뜨고 있는 고양이를 아래에서 올려다 보는 모습" />
+          <img
+            src="./images/img_5.png"
+            alt="눈을 동그랗게 뜨고 있는 고양이를 아래에서 올려다 보는 모습"
+          />
           <a href="#top" class="scroll-top-btn"></a>
         </figure>
-        
       </section>
     </main>
 
@@ -198,22 +217,41 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             /></a>
           </li>
         </ul>
-
-        <p>
-          <!-- <a href="#top" class="to-top" aria-label="맨 위로 이동">▲</a> -->
-        </p>
       </div>
-      <!-- 모달 HTML -->
-<div class="modal" id="myModal">
-  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="close-btn" id="closeModalBtn" aria-label="닫기">×</button>
 
-    <p class="modal-title" id="modalTitle">Thank you!</p>
-    <p class="modal-text">Lorem Ipsum is simply dummy text of the printing industry.</p>
-    <button class="modal-btn">OK! I Love HODU</button>
-  </div>
-</div>
+      <!-- 다른 모달(블로그용)은 그대로 -->
+      <div class="modal" id="myModal">
+        <div
+          class="modal-content"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modalTitle"
+        >
+          <button class="close-btn" id="closeModalBtn" aria-label="닫기">
+            ×
+          </button>
+          <p class="modal-title" id="modalTitle">Thank you!</p>
+          <p class="modal-text">
+            Lorem Ipsum is simply dummy text of the printing industry.
+          </p>
+          <button class="modal-btn">OK! I Love HODU</button>
+        </div>
+      </div>
+
+      <!-- ✅ 모바일 메뉴 모달(:target 사용, JS 불필요) -->
+      <div id="menu-modal" class="menu-modal" aria-hidden="true">
+        <div
+          class="menu-dialog"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="mobileMenuTitle"
+        >
+          <a href="#" class="menu-close" aria-label="닫기">×</a>
+        </div>
+      </div>
     </footer>
-<script src="./js/modal.js"></script>
-</body>
+
+    <script src="./js/modal.js"></script>
+    <script src="./js/nav.js"></script>
+  </body>
 </html>
