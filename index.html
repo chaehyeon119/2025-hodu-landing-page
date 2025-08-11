@@ -136,7 +136,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             <h2 id="subscribe-title">Subscribe to our Blog post</h2>
             <p id="subscribe-subtext">
               Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
+              industry.<br>Lorem Ipsum has been the industry's standard dummy text
             </p>
           </div>
           <!-- 폼 버튼 -->
@@ -157,14 +157,16 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.
               placeholder="Enter your e-mail address"
               required
             />
-            <button type="submit" class="btn btn-primary">Subscribe</button>
+            <button type="button" class="btn btn-primary" id="openModalBtn">Subscribe</button>
           </form>
         </div>
 
         <!-- 배경용 이미지: 장식 처리 -->
         <figure class="subscribe-bg" aria-hidden="true">
           <img src="./images/img_5.png" alt="눈을 동그랗게 뜨고 있는 고양이를 아래에서 올려다 보는 모습" />
+          <a href="#top" class="scroll-top-btn"></a>
         </figure>
+        
       </section>
     </main>
 
@@ -201,6 +203,17 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry.
           <!-- <a href="#top" class="to-top" aria-label="맨 위로 이동">▲</a> -->
         </p>
       </div>
+      <!-- 모달 HTML -->
+<div class="modal" id="myModal">
+  <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="close-btn" id="closeModalBtn" aria-label="닫기">×</button>
+
+    <p class="modal-title" id="modalTitle">Thank you!</p>
+    <p class="modal-text">Lorem Ipsum is simply dummy text of the printing industry.</p>
+    <button class="modal-btn">OK! I Love HODU</button>
+  </div>
+</div>
     </footer>
-  </body>
+<script src="./js/modal.js"></script>
+</body>
 </html>

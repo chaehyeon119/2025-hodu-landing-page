@@ -43,6 +43,8 @@
 
 html {
   font-size: 10px;
+  /* #top으로 올라갈 때 부드럽게 올라가는 속성 */
+  scroll-behavior: smooth;
 }
 
 * {
@@ -200,8 +202,7 @@ main {
 
 .hero-photo img {
   max-width: 415px;
-  /* 359.5px ÷ 19.2px ≈ 18.703vw */
-  width: clamp(197px, 15.94vw, 415px);
+  width: clamp(197px, 21.61vw, 415px);
   min-width: 326px;
   aspect-ratio: 415/766;
   display: block;
@@ -380,6 +381,7 @@ main {
   margin: 0 auto;
   /* 핵심: 가로 배치 + 가운데 정렬 */
   display: flex;
+
   align-items: center;
   justify-content: space-between;
   gap: clamp(20px, 7.45vw, 143px);
@@ -403,7 +405,6 @@ main {
   display: flex;
   flex-direction: column;
   gap: 18px;
-
   max-width: 491px;
 }
 
@@ -411,16 +412,17 @@ main {
 #subscribe-title {
   font-weight: 700;
   font-size: clamp(24px, 1.875vw, 36px);
+  width: clamp(194px, 24.270833vw, 466px);
 }
+
 #subscribe-subtext {
   margin: 0;
   font-size: 14px;
   line-height: 1.4;
-  opacity: 0.9;
 }
 
 .subscribe-form {
-  width: 530px;
+  width: clamp(262px, 27.6041667vw, 530px);
   height: 60px;
   display: flex;
   align-items: center;
@@ -452,8 +454,7 @@ main {
 }
 
 /* 버튼 */
-.subscribe-form .btn,
-.subscribe-form .btn.btn-primary {
+.subscribe-form .btn {
   border: 0;
   border-radius: 9999px;
   padding: 12px 20px;
@@ -463,28 +464,131 @@ main {
   cursor: pointer;
 }
 
-.subscribe-container {
-  position: relative;
-  z-index: 1;
-}
-#subscribe {
-  position: relative;
-  padding-bottom: 340px; /* 배경 높이만큼 공간 예약 */
+/* Modal 기본 스타일 */
+.modal {
+  display: none; /* 처음엔 숨김 */
+  position: fixed;
+  z-index: 9999; /* 최상단 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* 모달 내용 */
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("../images/modal.png");
+  border-radius: 30px;
+  width: 600px;
+  height: 400px;
+  text-align: center;
+  box-shadow: 0px 0px 30px 0px #00000033;
+}
+
+/* 닫기 버튼(삭제 고려) */
+.close-btn {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--orange);
+  margin-top: 196px;
+  margin-bottom: 12px;
+}
+
+.modal-text {
+  font-size: 14px;
+  margin-bottom: 38px;
+}
+.modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 28px;
+  background: var(--orange);
+  color: #fff;
+  border: 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* <------- 카드 겹쳐보이게 만들기 ------------->  */
+#subscribe {
+  position: relative;
+  /* 배경 높이 확보(배경높이(340px) + 카드 높이 절반) */
+  min-height: calc(340px + (clamp(200px, 10.4167vw, 326px) / 2));
+}
+
+/* 네이비 카드 */
+.subscribe-container {
+  position: absolute;
+  left: 50%;
+  /* 카드의 중앙을 배경 윗선에 맞추기(부모 아래 끝에서 340px위로 올라가기) */
+  top: calc(100% - 340px);
+  /* 여기서 -50%로 중앙 맞추고, 추가로 위로 올림(30px) */
+  transform: translate(-50%, -50%);
+  z-index: 100;
+
+  max-width: 1280px;
+  width: clamp(326px, 67.1875vw, 1280px);
+  height: clamp(200px, 10.4167vw, 326px);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* 왼쪽 텍스트랑 오른쪽 폼과의 간격 조절 */
+  gap: clamp(20px, 7.45vw, 143px);
+
+  padding: clamp(36px, 2.5vw, 50px) clamp(32px, 3vw, 58px);
+  background-color: #263140;
+  border-radius: 30px;
+  color: #fff;
+}
+
+/* 배경 이미지 */
 .subscribe-bg {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 340px; /* 배경 띠 높이 고정 */
-  transform: none; /* translateY 제거 */
+  height: 340px;
   z-index: 0;
 }
 .subscribe-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* <----- 호버 버튼  ------->*/
+.scroll-top-btn {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url("../images/scroll-top-btn.png") center / contain no-repeat;
+}
+
+/* hover/focus 시 SVG2로 변경 */
+.scroll-top-btn:hover,
+.scroll-top-btn:focus-visible {
+  background-image: url("../images/scroll-top-btn-hover.png");
 }
 /* <-----footer-----------------------> */
 /* 1) 바깥 footer는 block으로 */
@@ -493,8 +597,8 @@ footer {
 }
 
 .container-footer {
-  max-width: 1280px; /* 컨테이너 폭 제한 */
-  width: 100%;
+  width: clamp(390px, 60.15625vw, 1920px);
+
   margin-inline: auto; /* 가운데 배치 */
   height: 160px;
 
@@ -504,8 +608,9 @@ footer {
 
 /* 로고는 왼쪽, 소셜은 오른쪽 */
 .container-footer .social {
+  width: clamp(176px, 10.520833vw, 228px);
   display: flex;
-  gap: 20px;
+  gap: clamp(16px, 0.9375vw, 20px);
   padding: 0;
   margin: 0;
   /* 오른쪽 끝 정렬 */
