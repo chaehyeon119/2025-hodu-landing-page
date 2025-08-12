@@ -670,48 +670,39 @@ footer {
   }
 
   .gallery-container {
-    display: block; /* 데스크톱 flex를 무효화 */
-    padding-right: 32px;
     padding-left: 32px;
-    overflow: visible; /*  여기! 더 이상 컨테이너가 안 움직이게 */
-    width: 100%;
-  }
-  .gallery-container p {
-    margin-bottom: 40px;
+    padding-right: 32px;
   }
 
-  /* 이미지 리스트(ul)만 가로 스크롤 */
   .gallery-photo {
-    min-height: 240px;
-
+    /* 스크롤 컨테이너 */
     display: flex;
-    flex-wrap: nowrap; /* 한 줄로 */
     gap: 20px;
-
-    /* 스크롤  */
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 
-    /* 텍스트들과 같은 좌우 여백 맞추기 */
-    /* padding-right: 0; */
-    /* padding이 두 번 들어가 보이지 않게 균형 */
-    margin-left: 0;
+    /* 핵심 */
+    /* padding-left: 32px; */
+    /* padding-inline-start: 0;  */
     margin-right: -32px;
+
+    min-height: 240px;
+    margin-left: 0;
     margin-bottom: 60px;
-
-    /* 스크롤 스냅(옵션): 카드 단위로 착! 붙게 */
-    scroll-snap-type: x mandatory;
-  }
-
-  /* 각 항목/이미지: 줄어들지 않게 + 스냅 기준 */
-  .gallery-photo li {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
     list-style: none;
+    scroll-snap-type: x mandatory;
+    justify-content: start;
   }
+
+  .gallery-photo > li {
+    flex: 0 0 auto;
+    list-style: none;
+    scroll-snap-align: start;
+  }
+
   .gallery-photo img {
     display: block;
-    width: 260px; /* 카드 폭 */
+    width: 260px;
     height: auto;
     border-radius: 12px;
     flex-shrink: 0;
