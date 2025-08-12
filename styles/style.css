@@ -669,6 +669,7 @@ footer {
   .gallery-container {
     padding-left: 32px;
     padding-right: 32px;
+    overflow: hidden; /* 가로 스크롤 방지 */
   }
 
   .gallery-photo {
@@ -679,16 +680,16 @@ footer {
     -webkit-overflow-scrolling: touch;
 
     /* 핵심 */
-    /* padding-left: 32px; */
-    /* padding-inline-start: 0;  */
     margin-right: -32px;
-
     min-height: 240px;
     margin-left: 0;
     margin-bottom: 60px;
     list-style: none;
     scroll-snap-type: x mandatory;
     justify-content: start;
+
+    /* 그림자 효과를 위한 패딩 추가 */
+    padding: 10px 0; /* 위아래 패딩으로 그림자 공간 확보 */
   }
 
   .gallery-photo > li {
@@ -701,8 +702,9 @@ footer {
     display: block;
     width: 260px;
     height: auto;
-    border-radius: 12px;
+    border-radius: 18px;
     flex-shrink: 0;
+    box-shadow: 10px 10px 20px 0px #00000040;
   }
 }
 
