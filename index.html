@@ -255,7 +255,6 @@
       </div>
 
       <!-- 모바일 메뉴 모달(햄버거 버튼 누르면 모달 열림) /데스크톱에서는 aria-hidden="true" 추가 -->
-
       <div class="menu-modal" id="menu-modal" hidden>
         <div
           class="menu-tab"
@@ -265,20 +264,17 @@
         >
           <h2 id="menuTitle" class="a11y-hidden">모바일 메뉴</h2>
           <div class="menu-container">
-            <div class="menu-box">
-              <button class="arrow-btn" id="closeMenuModalBtn" aria-label="메뉴 닫기">
-                <img src="./images/arrow-right.svg" alt="닫기" width="32" height="32">
-              </button>
-              <nav class="menu-list">
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-                <a href="/support">Support</a>
-                <a href="/download" class="btn-download">Download</a>
-              </nav>
-            </div>
+            <button class="arrow-btn" id="closeMenuModalBtn" aria-label="메뉴 닫기">
+              <img src="./images/arrow-right.svg" alt="닫기" width="32" height="32">
+            </button>
+            <nav class="menu-list">
+              <a href="/">Home</a>
+              <a href="/about">About</a>
+              <a href="/support">Support</a>
+              <a href="/download" class="btn-download">Download</a>
+            </nav>
           </div>
     </footer>
-
     <script src="./js/modal.js"></script>
   </body>
 </html>

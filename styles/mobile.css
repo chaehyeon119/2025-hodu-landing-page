@@ -42,30 +42,18 @@
   .menu-container {
     display: flex;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 820px;
-    background: #fff;
+    top: 0;
+    right: 0;
     overflow: hidden;
-  }
-
-  .menu-box {
-    margin-left: auto; /* 오른쪽으로 밀기 */
     background-color: #263140;
-    width: clamp(
-      250px,
-      calc(250px + (289 - 250) * (100vw - 250px) / (390 - 250)),
-      289px
-    );
-    height: 100%;
+    width: 70%;
+    height: 100vh;
   }
-  .menu-box .arrow-btn {
-    /* margin-left: 100px; */
+  .arrow-btn {
+    display: flex;
+    padding: 22px 0 0 20px;
     background-color: transparent;
     border: none;
-    margin: 22px 0 0 20px;
     cursor: pointer;
   }
   .menu-list {
@@ -139,7 +127,6 @@
   }
 
   /* 소개 섹션 + 갤러리 좌우 패딩 */
-  /* 자간을 넓혀서 맞췄는데 저게 맞으려나...? */
   #about .main-container {
     padding-left: 32px;
     padding-right: 32px;
@@ -197,7 +184,7 @@
     display: none;
   }
   .subscribe-form {
-    flex-direction: column; /* ← 핵심 */
+    flex-direction: column; /* 핵심 */
     align-items: stretch;
     gap: 12px;
     background: transparent; /* 입력창이 자체 배경 갖도록 */
@@ -288,7 +275,7 @@
   }
   .container-footer .mobile-menu {
     grid-column: 2;
-    /* 오른쪽 칸에서 첫번째 줄부터  두번째 줄까지 차지*/
+    /* 오른쪽 칸에서 첫번째 줄부터 두번째 줄까지 차지*/
     grid-row: 1 / span 2;
     display: flex;
     flex-direction: column;
