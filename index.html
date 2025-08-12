@@ -106,12 +106,17 @@
       <section aria-labelledby="gallery-heading">
         <div class="gallery-container">
           <h2 id="gallery-heading">dummy text of the printing and dummy</h2>
+          <!-- 스크린 리더 전용 설명 추가 -->
+          <p id="gallery-desc" class="a11y-hidden">
+            고양이 사진이 가로로 나열되어 있습니다.
+          </p>
           <p>
             Lorem Ipsum is simply
             <strong style="color: var(--orange)">dummy text</strong> of the
             printing and typesetting industry. <br />Lorem Ipsum has been the
             industry's standard dummy text ever since the 1500s, when an unknown
           </p>
+
           <ul class="gallery-photo" aria-describedby="gallery-desc">
             <li>
               <div class="cat-photo">
@@ -149,7 +154,7 @@
       </section>
 
       <!-- 구독 폼 -->
-      <section id="subscribe" aria-labelledby="subscribe-heading">
+      <section id="subscribe" aria-labelledby="subscribe-title">
         <div class="subscribe-container">
           <div class="subscribe-text">
             <h2 id="subscribe-title">Subscribe to our Blog post</h2>
@@ -196,7 +201,7 @@
       </section>
     </main>
 
-    <footer role="content-info">
+    <footer>
       <div class="container-footer">
         <a href="/" class="footer-logo" aria-label="HODU 홈">
           <img src="./images/Logo-fin.svg" alt="HODU" />
@@ -251,13 +256,14 @@
       </div>
 
       <!-- 모바일 메뉴 모달(햄버거 버튼 누르면 모달 열림) /데스크톱에서는 aria-hidden="true" 추가 -->
-      <div role="dialog" class="menu-modal" id="menu-modal" aria-hidden="true">
+      <div class="menu-modal" id="menu-modal" aria-hidden="true">
         <div
           class="menu-dialog"
           role="dialog"
           aria-modal="true"
           aria-labelledby="mobileMenuTitle"
         >
+          <h2 id="mobileMenuTitle" class="a11y-hidden">모바일 메뉴</h2>
           <button class="close-btn" id="closeMenuModalBtn" aria-label="닫기">
             ×
           </button>
