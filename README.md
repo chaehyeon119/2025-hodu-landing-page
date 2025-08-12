@@ -10,6 +10,7 @@
 - [프로젝트 구조](#프로젝트-구조)
 - [개발 일정](#개발-일정)
 - [화면 설계도](#화면-설계도)
+- [구현 화면 및 기능](#구현-화면-및-기능)
 - [실행 방법](#실행-방법)
 - [주요 구현 사항](#주요-구현-사항)
 - [웹 접근성 고려사항](#웹-접근성-고려사항)
@@ -20,7 +21,7 @@
 
 ## 프로젝트 소개
 
-HODU는 고양이 테마의 브랜드 랜딩 페이지로, 사용자 친화적인 인터페이스와 웹 접근성을 중점으로 개발했습니다. 반응형 디자인을 통해 다양한 디바이스에서 최적의 사용자 경험을 제공합니다.
+HODU는 고양이 테마의 랜딩 페이지로, 사용자 친화적인 인터페이스와 웹 접근성을 중점으로 개발했습니다. 반응형 디자인을 통해 다양한 디바이스에서 최적의 사용자 경험을 제공합니다.
 
 ## 주요 기능
 
@@ -118,7 +119,23 @@ HODU는 고양이 테마의 브랜드 랜딩 페이지로, 사용자 친화적�
 
 ![UI 설계도](./images/ui.png)
 
-> **참고**: 위 GIF 파일들은 프로젝트의 실제 화면 설계도와 반응형 동작을 보여줍니다. 각 이미지를 클릭하면 더 큰 화면으로 확인할 수 있습니다.
+## 구현 화면 및 기능
+
+### 데스크톱 버전
+
+![데스크톱 구현 화면](./images/desktop.gif)
+
+### 모바일 버전
+
+![모바일 구현 화면](./images/mobile.gif)
+
+**구현된 주요 기능:**
+
+- 반응형 레이아웃 (데스크톱 ↔ 모바일 전환)
+- 구독 모달 시스템
+- 모바일 메뉴 모달
+- 스무스 스크롤 네비게이션
+- 웹 접근성 지원 (키보드 네비게이션, 스크린 리더)
 
 ## 실행 방법
 
@@ -183,14 +200,15 @@ html {
 
 - `<header>`, `<main>`, `<footer>` 태그 활용
 - `<nav>`, `<section>`, `<article>` 등 의미있는 태그 사용
-- `aria-labelledby`, `aria-describedby` 속성으로 연결
 
 ### 2. 스크린 리더 지원
 
+- `aria-labelledby`, `aria-describedby` 속성으로 연결
+
 ```html
 <!-- 스크린 리더 전용 설명 -->
-<p id="gallery-desc" class="a11y-hidden">
-  고양이 사진이 가로로 나열되어 있습니다.
+<p id="subscribe-help" class="a11y-hidden">
+  메일레터는 매주 월요일에 발송되며, 언제든 구독을 해지할 수 있습니다.
 </p>
 
 <!-- 접근성 숨김 클래스 -->
@@ -199,24 +217,21 @@ html {
 }
 ```
 
-### 3. 키보드 네비게이션
-
-- 모든 인터랙티브 요소에 포커스 가능
-- `tabindex` 속성 적절히 활용
-- 포커스 표시 스타일 정의
-
-### 4. 이미지 대체 텍스트
+### 3. 이미지 대체 텍스트
 
 ```html
-<img
-  src="./images/box-cat.png"
-  alt="박스를 머리에 쓰고 앉아 있는 줄무니 고양이"
-/>
+<!-- 갤러리 이미지들 - 구체적인 설명 -->
+<img src="./images/img_1.png" alt="캣타워 위의 고양이" />
+<img src="./images/img_2.png" alt="바닥에 앉아 벽을 바라보는 고양이" />
+<img src="./images/img_3.png" alt="바닥에 앉아 카메라를 보는 고양이" />
+
+<!-- 장식용 이미지 - 빈 alt 속성 -->
+<img src="./images/mail.svg" alt="" class="subscribe-icon" />
 ```
 
 ## 반응형 디자인
 
-### 1. 모바일 우선 접근법
+### 1. 데스크톱 우선 접근법
 
 - 기본 스타일은 데스크톱 기준
 - `@media screen and (min-width: 576px)` 로 모바일 스타일 적용
@@ -281,28 +296,43 @@ font-size: clamp(1.4rem, 2.5vw, 1.8rem);
 
 #### 문제: 화면 전체에 스크롤이 생긴 현상
 
+**에러 상황**: 모바일 환경에서 이미지 슬라이더 구현 시 전체 화면에 가로 스크롤이 발생하여 오른쪽 여백이 생기는 문제
+**해결 방법**: 슬라이더를 감싸는 컨테이너에 `width: 100%` 설정
+
+```css
+/* 기존 코드 (문제 발생) */
+.gallery-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  /* width 속성 누락으로 인한 오버플로우 */
+}
+
+/* 해결된 코드 */
+.gallery-container {
+  max-width: 1280px;
+  width: 100%; /* 컨테이너가 화면 너비를 초과하지 않도록 설정 */
+  margin: 0 auto;
+  overflow: hidden; /* 추가로 슬라이더 오버플로우 방지 */
+}
+```
+
 ### 2. JavaScript 관련 에러
 
-#### 문제: 모달 닫기 기능이 작동하지 않음
+#### 문제: ID 매핑 불일치로 인한 모달 기능 작동 안됨
 
-**에러 상황**: 이벤트 위임을 사용하지 않아 동적으로 생성된 요소에 이벤트가 바인딩되지 않음
-**해결 방법**: 이벤트 위임 패턴 적용
+**에러 상황**: JavaScript에서 참조하는 ID와 HTML의 실제 ID가 일치하지 않아 모달 열기/닫기 기능이 작동하지 않음
+**해결 방법**: HTML과 JavaScript의 ID를 정확히 매핑
 
 ```javascript
-// 기존 코드
-closeBtn.addEventListener("click", () => {
-  modal.style.display = "none";
-});
-
-// 해결된 코드
-modal.addEventListener("click", (e) => {
-  if (e.target === modal) modal.style.display = "none";
-});
+// 해결된 코드 (정확한 ID 매핑)
+const openSubscribeModalBtn = document.getElementById("openModalBtn"); // HTML의 실제 ID
+const closeSubscribeModalBtn = document.getElementById("closeModalBtn"); // HTML의 실제 ID
+const myModal = document.getElementById("myModal"); // HTML의 실제 ID
 ```
 
 ### 3. 웹 접근성 관련 에러
 
-#### 문제: 스크린 리더가 이미지 내용을 읽지 못함
+#### 문제: 적절하지 않은 alt 속성 사용
 
 **에러 상황**: 장식용 이미지에 불필요한 alt 텍스트 제공
 **해결 방법**: 장식용 이미지는 `alt=""` 또는 `aria-hidden="true"` 사용
@@ -349,12 +379,65 @@ padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 
 - 시맨틱 HTML의 중요성 재확인
 - 스크린 리더 사용자를 위한 적절한 대체 텍스트 제공
-- 키보드 네비게이션 지원의 필요성
 
 ### 4. 성능 최적화
 
 - 이미지 최적화 및 적절한 포맷 선택
 - CSS와 JavaScript 파일 분리로 유지보수성 향상
+
+### 5. 코드 리뷰의 중요성
+
+#### 이미지 최적화 및 적절한 포맷 선택
+
+```html
+<!-- SVG 사용 (벡터 이미지, 확대해도 깨지지 않음) -->
+<img src="./images/Logo-fin.svg" alt="HODU" />
+<img src="./images/mail.svg" alt="" class="subscribe-icon" />
+<img src="./images/arrow-right.svg" alt="닫기" />
+
+<!-- PNG 사용 (고품질 이미지, 투명도 지원) -->
+<img
+  src="./images/box-cat.png"
+  alt="박스를 머리에 쓰고 앉아 있는 줄무니 고양이"
+/>
+<img src="./images/img_1.png" alt="캣타워 위의 고양이" />
+
+<!-- 장식용 이미지는 alt="" 처리 -->
+<img src="./images/icon-blog.png" alt="" aria-hidden="true" />
+```
+
+#### 폰트 파일 폴더 정리의 이점
+
+**폰트 폴더 정리의 장점:**
+
+- **버전 관리 효율성**: 폰트 파일 변경 시 Git에서 변경사항 추적 용이
+- **성능 최적화**: 필요한 폰트만 선택적으로 로드 가능
+
+**로컬 폰트 사용의 성능적 장점:**
+
+- **파일 관리 용이성**: 폰트 파일들을 한 곳에 모아서 관리
+- **경로 일관성**: `../fonts/` 상대 경로로 모든 폰트 파일 접근
+- **빠른 로딩 속도**: 외부 서버 요청 없이 직접 제공
+- **안정적인 서비스**: 외부 서버 장애에 영향받지 않음
+- **오프라인 지원**: 인터넷 연결 없이도 폰트 정상 표시
+- **폰트 가중치 체계화**: Bold, Regular, Medium, Light, Thin 등 체계적 관리
+
+```css
+/* 폰트 정의 - 상대 경로로 깔끔하게 관리 */
+@font-face {
+  font-family: "Spoqa Han Sans Neo";
+  src: url("../fonts/SpoqaHanSansNeo-Bold.otf") format("otf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Spoqa Han Sans Neo";
+  src: url("../fonts/SpoqaHanSansNeo-Regular.otf") format("otf");
+  font-weight: 400;
+  font-style: normal;
+}
+```
 
 ## 참고자료
 
