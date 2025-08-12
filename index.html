@@ -52,6 +52,7 @@
 
     <main id="main">
       <!-- 히어로 -->
+      <!-- 스크린리더가 읽을 수 있게 aria-labelledby + id 사용 -->
       <section id="download" aria-labelledby="hero-heading">
         <div class="hero-container">
           <div class="hero-text">
@@ -70,21 +71,21 @@
             </p>
           </div>
 
-          <figure class="hero-photo" aria-hidden="true">
+          <div class="hero-photo" aria-hidden="true">
             <img
               src="./images/box-cat.png"
               alt="박스를 머리에 쓰고 앉아 있는 줄무니 고양이"
             />
-          </figure>
+          </div>
         </div>
       </section>
 
       <!-- 소개 섹션 -->
       <section id="about" aria-labelledby="about-heading">
         <div class="main-container">
-          <figure class="main-photo">
+          <div class="main-photo">
             <img src="./images/img_4.png" alt="침대 위에 누워있는 고양이" />
-          </figure>
+          </div>
 
           <article class="copy">
             <h2 id="about-heading">
@@ -113,25 +114,25 @@
           </p>
           <ul class="gallery-photo" aria-describedby="gallery-desc">
             <li>
-              <figure class="cat-photo">
+              <div class="cat-photo">
                 <img src="./images/img_1.png" alt="캣타워 위의 고양이" />
-              </figure>
+              </div>
             </li>
             <li>
-              <figure class="cat-photo">
+              <div class="cat-photo">
                 <img
                   src="./images/img_2.png"
                   alt="바닥에 앉아 벽을 바라보는 고양이"
                 />
-              </figure>
+              </div>
             </li>
             <li>
-              <figure class="cat-photo">
+              <div class="cat-photo">
                 <img
                   src="./images/img_3.png"
                   alt="바닥에 앉아 카메라를 보는 고양이"
                 />
-              </figure>
+              </div>
             </li>
           </ul>
           <div class="gallery-container-text">
@@ -182,17 +183,16 @@
               Subscribe
             </button>
           </form>
+          <!-- 디자인에는 없지만 웹 접근성을 높이기 위해서 p 태그의 내용을 따로 추가함 -->
+          <p id="subscribe-help" class="a11y-hidden">
+            메일레터는 매주 월요일에 발송되며, 언제든 구독을 해지할 수 있습니다.
+          </p>
         </div>
 
-        <!-- 배경 이미지 -->
-        <figure class="subscribe-bg" aria-hidden="true">
-          <!-- 장식성의 이미지이므로 div 태그로 바꾸고 background 속성으로 넣기 -->
-          <img
-            src="./images/img_5.png"
-            alt="눈을 동그랗게 뜨고 있는 고양이를 아래에서 올려다 보는 모습"
-          />
+        <!-- 배경 이미지(의미가 없는 장식성 이미지라 div 태그로 넣었음) -->
+        <div class="subscribe-bg" aria-hidden="true">
           <a href="#top" class="scroll-top-btn"></a>
-        </figure>
+        </div>
       </section>
     </main>
 
@@ -224,15 +224,15 @@
             /></a>
           </li>
         </ul>
-        <ul class="mobile-menu">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Support</a></li>
-          <li><a href="#">Terms of Use</a></li>
+        <ul class="mobile-menu" aria-label="모바일 메뉴">
+          <li><a href="#" aria-label="about">About</a></li>
+          <li><a href="#" aria-label="blog">Blog</a></li>
+          <li><a href="#" aria-label="support">Support</a></li>
+          <li><a href="#" aria-label="terms of use">Terms of Use</a></li>
         </ul>
       </div>
-
-      <div class="modal" id="myModal">
+      <!-- 모바일 메뉴 모달(subscribe 버튼 누르면 모달 열림) -->
+      <div role="dialog" class="modal" id="myModal">
         <div
           class="modal-content"
           role="dialog"
@@ -250,8 +250,8 @@
         </div>
       </div>
 
-      <!-- 모바일 메뉴 모달(:target)  -->
-      <div id="menu-modal" class="menu-modal" aria-hidden="true">
+      <!-- 모바일 메뉴 모달(햄버거 버튼 누르면 모달 열림) /데스크톱에서는 aria-hidden="true" 추가 -->
+      <div role="dialog" class="menu-modal" id="menu-modal" aria-hidden="true">
         <div
           class="menu-dialog"
           role="dialog"

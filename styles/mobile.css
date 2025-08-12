@@ -1,14 +1,7 @@
 /* ===== 모바일 전용 ===== */
 @media (max-width: 576px) {
-  :root {
-    --orange: #d97652;
-    --white: #fff;
-    --subscribe-navy: #263140;
-    --header-bg: #f2e9d8;
-    --font-main: "Spoqa Han Sans Neo", sans-serif;
-    --placeholder-gray: #767676;
-  }
   /* 메뉴는 숨김, 햄버거는 보임 */
+  /* ===== header ========================================*/
   header nav {
     display: none;
   }
@@ -30,18 +23,13 @@
     height: 28px;
   }
 
-  /* ===== CSS-only 모달 (:target) ===== */
+  /* ===== menu-modal(햄버거 버튼 클릭 시 발생) ========================================*/
   .menu-modal {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
     display: none; /* 기본 숨김 */
     z-index: 10000;
-  }
-
-  /* #menu-modal 이 URL에 타겟되면 보임 */
-  .menu-modal:target {
-    display: block;
   }
 
   /* 모달 박스 */
@@ -57,10 +45,7 @@
       no-repeat;
 
     /* 왼쪽은 101px 영역 확보, 오른쪽은 이미지(299px)와 겹치지 않도록 패딩 */
-    padding-left: 101px;
-    padding-right: 299px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 299px 20px 101px;
 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     overflow: hidden;
@@ -77,13 +62,14 @@
     color: #000;
   }
 
+  /* ===== main / 히어로 ========================================*/
   .hero-heading {
     text-align: center;
     margin-bottom: 30px;
   }
 
   .hero-container {
-    display: flex; /* 이미 flex라면 유지됨 */
+    display: flex;
     flex-direction: column; /* 위아래로 쌓기 */
     align-items: center; /* 가로(교차축) 가운데 */
     justify-content: center; /* 세로(주축) 가운데 */
@@ -112,9 +98,8 @@
     max-height: 80vh; /* 선택: 화면 높이 넘지 않게 안전장치 */
   }
 
-  /* <--- 누워 있는 고양이(소개 섹션) --------------> */
   /* 소개 섹션 + 갤러리 좌우 패딩 */
-  /* 자간을 넓혀서 맞췄는데 저게 맞으려나 */
+  /* 자간을 넓혀서 맞췄는데 저게 맞으려나...? */
   #about .main-container {
     padding-left: 32px;
     padding-right: 32px;
@@ -138,7 +123,8 @@
     margin-bottom: 60px;
   }
 
-  /* 설명 + 버튼 레이아웃은 그대로(스크롤 영향 X) */
+  /* ===== gallery ========================================*/
+
   .gallery-container-text {
     display: flex;
     flex-direction: column;
@@ -156,8 +142,7 @@
     margin-top: 12px;
   }
 
-  /*  모달 내용*/
-
+  /* ===== subscirbe ========================================*/
   #subscribe {
     position: relative;
     /* 배경 높이 확보(배경높이(340px) + 카드 높이 절반) */
@@ -188,46 +173,27 @@
 
   .subscribe-form input {
     width: 100%;
-    border: none;
-    outline: none;
-    border-radius: 9999px;
+    border-radius: 60px;
     padding: 14px 16px 14px 48px; /* 아이콘 자리 */
     background: #fff url("../images/mail.svg") no-repeat 16px center;
     background-size: 20px;
     font-size: 14px;
-    color: #263140;
   }
 
   .subscribe-btn {
     align-self: flex-start; /* 버튼을 왼쪽 정렬 */
     padding: 12px 24px;
-    border-radius: 28px;
-    background: var(--orange);
-    color: #fff;
-    border: 0;
-    font-weight: 700;
-    cursor: pointer;
   }
   /* 모달 내용 */
   .modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* 이미지 요청 드려서 수정하기 */
     background: url("../images/mobile-modal.png") no-repeat center/cover;
-    border-radius: 30px;
     width: 300px;
     height: 300px;
     aspect-ratio: 1/1;
-    text-align: center;
-    box-shadow: 0px 0px 30px 0px #00000033;
   }
 
   .modal-title {
     font-size: 24px;
-    font-weight: 700;
-    color: var(--orange);
     margin-top: 126px;
     margin-bottom: 10px;
   }
@@ -236,20 +202,8 @@
     font-size: 14px;
     margin: 0 50px 28px;
   }
-  .modal-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 24px;
-    border-radius: 28px;
-    background: var(--orange);
-    color: #fff;
-    border: 0;
-    font-weight: 700;
-    cursor: pointer;
-  }
 
-  /* <---------푸터 -----> */
+  /* ===== footer ========================================*/
   .container-footer {
     display: grid;
     /* 왼쪽은 가능한 넓게 차지, 오른쪽 칸은 내용 크기에 맞춰서 */
@@ -286,6 +240,7 @@
     margin: 0;
     width: 176px;
     align-items: center;
+    margin-top: 50px;
   }
   .container-footer .social img {
     width: 32px;

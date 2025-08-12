@@ -20,7 +20,6 @@ myModal.addEventListener("click", (e) => {
 });
 
 // === 메뉴 모달 ===
-// A안: href 기본동작 막고 JS로만 열기(해시 변경 X → :target 영향 없음)
 openMenuModalBtn.addEventListener("click", (e) => {
   e.preventDefault(); // 해시 이동 방지
   menuModal.style.display = "block";
