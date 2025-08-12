@@ -6,6 +6,7 @@
 /* 2. max-width와 width:100% 속성의 중요성 */
 /* 3. height 말고 lin-height로 높이를 맞추는 것의 장점 */
 /* 4. 선택자 우선순위 */
+/* 5. 네거티브 마진 */
 @font-face {
   font-family: "Spoqa Han Sans Neo";
   src: url("../fonts/SpoqaHanSansNeo-Bold.otf") format("otf");
@@ -686,10 +687,10 @@ footer {
     -webkit-overflow-scrolling: touch;
 
     /* 텍스트들과 같은 좌우 여백 맞추기 */
-    padding-right: 0;
+    /* padding-right: 0; */
     /* padding이 두 번 들어가 보이지 않게 균형 */
     margin-left: 0;
-    margin-right: 0;
+    margin-right: -32px;
     margin-bottom: 60px;
 
     /* 스크롤 스냅(옵션): 카드 단위로 착! 붙게 */

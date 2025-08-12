@@ -215,7 +215,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     /* 이미지 요청 드려서 수정하기 */
-    background: url("../images/mobile-modal.png") no-repeat center / cover;
+    background: url("../images/mobile-modal.png") no-repeat center/cover;
     border-radius: 30px;
     width: 300px;
     height: 300px;
