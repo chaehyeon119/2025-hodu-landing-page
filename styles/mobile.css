@@ -115,8 +115,7 @@
   /* <--- 누워 있는 고양이(소개 섹션) --------------> */
   /* 소개 섹션 + 갤러리 좌우 패딩 */
   /* 자간을 넓혀서 맞췄는데 저게 맞으려나 */
-  #about .main-container,
-  .gallery-container {
+  #about .main-container {
     padding-left: 32px;
     padding-right: 32px;
     padding-bottom: 0;
@@ -137,54 +136,6 @@
   #about .copy p {
     font-size: 14px;
     margin-bottom: 60px;
-  }
-
-  .gallery-container {
-    display: block; /* 데스크톱 flex를 무효화 */
-    padding-left: 32px;
-    padding-right: 32px;
-    overflow: visible; /* ← 여기! 더 이상 컨테이너가 안 움직이게 */
-    width: 100%;
-  }
-  .gallery-container p {
-    margin-bottom: 40px;
-  }
-  /* 이미지 리스트(ul)만 가로 스크롤 */
-  .gallery-photo {
-    min-height: 240px;
-
-    display: flex;
-    flex-wrap: nowrap; /* 한 줄로 */
-    gap: 20px;
-
-    /* 스크롤  */
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-
-    /* 텍스트들과 같은 좌우 여백 맞추기 */
-    padding-left: 32px;
-    padding-right: -32px;
-    /* padding이 두 번 들어가 보이지 않게 균형 */
-    margin-left: 0;
-    margin-right: 0;
-    margin-bottom: 60px;
-
-    /* 스크롤 스냅(옵션): 카드 단위로 착! 붙게 */
-    scroll-snap-type: x mandatory;
-  }
-
-  /* 각 항목/이미지: 줄어들지 않게 + 스냅 기준 */
-  .gallery-photo li {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-    list-style: none;
-  }
-  .gallery-photo img {
-    display: block;
-    width: 260px; /* 카드 폭 */
-    height: auto;
-    border-radius: 12px;
-    flex-shrink: 0; /* 줄어들지 않게 */
   }
 
   /* 설명 + 버튼 레이아웃은 그대로(스크롤 영향 X) */
@@ -264,7 +215,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     /* 이미지 요청 드려서 수정하기 */
-    background-image: url("../images/modal.png") center / cover;
+    background: url("../images/mobile-modal.png") no-repeat center / cover;
     border-radius: 30px;
     width: 300px;
     height: 300px;

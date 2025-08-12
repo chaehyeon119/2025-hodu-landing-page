@@ -303,8 +303,6 @@ main {
 
 /* <-------------- 갤러리 섹션(dummy text... / 고양이 3마리) ----------------> */
 .gallery-container {
-  display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
@@ -628,6 +626,7 @@ footer {
 }
 
 /* ====== About 섹션: 좁아지면 세로로 쌓기 (이미지 위 / 텍스트 아래) ====== */
+/* ====== Gallery 섹션: 좁아지면 슬라이드로 보여주기 ======  */
 @media (max-width: 900px) {
   /* 가로 → 세로 */
   #about .main-container {
@@ -661,6 +660,54 @@ footer {
     max-width: none;
     font-size: 16px; /* 본문 글자도 바닥값 16px로 고정 */
     line-height: 1.5;
+  }
+
+  .gallery-container {
+    display: block; /* 데스크톱 flex를 무효화 */
+    padding-right: 32px;
+    padding-left: 32px;
+    overflow: visible; /*  여기! 더 이상 컨테이너가 안 움직이게 */
+    width: 100%;
+  }
+  .gallery-container p {
+    margin-bottom: 40px;
+  }
+
+  /* 이미지 리스트(ul)만 가로 스크롤 */
+  .gallery-photo {
+    min-height: 240px;
+
+    display: flex;
+    flex-wrap: nowrap; /* 한 줄로 */
+    gap: 20px;
+
+    /* 스크롤  */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    /* 텍스트들과 같은 좌우 여백 맞추기 */
+    padding-right: 0;
+    /* padding이 두 번 들어가 보이지 않게 균형 */
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 60px;
+
+    /* 스크롤 스냅(옵션): 카드 단위로 착! 붙게 */
+    scroll-snap-type: x mandatory;
+  }
+
+  /* 각 항목/이미지: 줄어들지 않게 + 스냅 기준 */
+  .gallery-photo li {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    list-style: none;
+  }
+  .gallery-photo img {
+    display: block;
+    width: 260px; /* 카드 폭 */
+    height: auto;
+    border-radius: 12px;
+    flex-shrink: 0; /* 줄어들지 않게 */
   }
 }
 
