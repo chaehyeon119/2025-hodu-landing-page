@@ -219,18 +219,15 @@ main {
   /* 반응형에서 width를 조절하면 박스도 같이 바뀔 수 있게 flex 속성 부여 */
   flex: 0 0 auto;
   align-self: center;
-  margin-right: 330px;
   position: relative;
 }
 
 .hero-photo img {
   max-width: 415px;
-  width: clamp(197px, 21.61vw, 415px);
-  min-width: 326px;
-  aspect-ratio: 415/766;
-  display: block;
+  width: clamp(240px, 38vw, 415px);
+  min-width: 0; /* ← 326px 고정 해제(겹침 방지) */
   height: auto;
-  object-fit: cover;
+  object-fit: contain; /* 잘림 없이 축소 */
 }
 
 .main-container {
@@ -638,7 +635,7 @@ footer {
   /* 가로 → 세로 */
   #about .main-container {
     flex-direction: column;
-    align-items: stretch; /* 자식들이 가로폭 100% 사용 */
+    align-items: center; /* 자식들이 가로폭 100% 사용 */
     gap: 24px;
     padding-inline: 16px; /* 좌우 여백 살짝 줄여줌 */
   }

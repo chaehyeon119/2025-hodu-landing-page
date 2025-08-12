@@ -32,8 +32,8 @@ HODU는 고양이 테마의 브랜드 랜딩 페이지로, 사용자 친화적�
 
 ## 기술 스택
 
-- **HTML5**: 시맨틱 마크업
-- **CSS3**:
+- **HTML**: 시맨틱 마크업
+- **CSS**:
   - CSS Grid & Flexbox
   - CSS Custom Properties (변수)
   - Media Queries
@@ -42,7 +42,6 @@ HODU는 고양이 테마의 브랜드 랜딩 페이지로, 사용자 친화적�
   - DOM 조작
   - 이벤트 리스너
   - 모달 기능
-- **폰트**: Spoqa Han Sans Neo
 
 ## 📁 프로젝트 구조
 
