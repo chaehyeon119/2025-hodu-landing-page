@@ -16,6 +16,7 @@
 - [반응형 디자인](#반응형-디자인)
 - [에러와 에러 해결](#에러와-에러-해결)
 - [개발하며 느낀점](#개발하며-느낀점)
+- [참고자료](#참고자료)
 
 ## 프로젝트 소개
 
@@ -79,52 +80,45 @@ HODU는 고양이 테마의 브랜드 랜딩 페이지로, 사용자 친화적�
 
 ## 📅 개발 일정
 
-### 1단계: 기획 및 설계 (1주차)
+### 1단계: 기획 및 설계 (1일차)
 
-- [ ] 프로젝트 요구사항 분석
-- [ ] 디자인 시스템 구축
-- [ ] 반응형 레이아웃 설계
-- [ ] 웹 접근성 가이드라인 수립
+- [ ] 시멘틱 태그를 활용한 HTML 기본 구조 작성(header, main, section, footer 등)
+- [ ] 헤더 영역 마크업 및 스타일링
+- [ ] 메인 콘텐츠 영역 레이아웃 구성
+- [ ] 푸터 영역 마크업 및 스타일링
+- [ ] 데스크톱 화면 기준 레이아웃 완성
 
-### 2단계: HTML 구조 작성 (2주차)
+### 2단계: HTML 구조 작성 (2일차)
 
-- [ ] 시맨틱 HTML 마크업
+- [ ] clamp() 함수를 활용한 데스크톱 화면 반응형 적용
 - [ ] 웹 접근성 속성 추가
-- [ ] 폼 요소 및 인터랙션 요소 구현
+- [ ] 미디어 쿼리를 활용한 모바일 레이아웃 구현
 
-### 3단계: CSS 스타일링 (3-4주차)
+###
 
-- [ ] 기본 레이아웃 및 그리드 시스템
-- [ ] 반응형 디자인 구현
-- [ ] 애니메이션 및 호버 효과
-- [ ] 모바일 최적화
+### 3단계: CSS 스타일링, JavaScript 기능 구현 (3일차)
 
-### 4단계: JavaScript 기능 구현 (5주차)
+- [ ] 미디어 쿼리 브레이크포인트 정의 및 점검
+- [ ] 갤러리 슬라이더 구현
+- [ ] 모달창 HTML 구조 작성
+- [ ] 모달창 CSS 스타일링(숨김 처리 포함)
+- [ ] 모달 기능 구현
 
-- [ ] 모달 시스템 개발
-- [ ] 이벤트 핸들러 구현
-- [ ] 폼 유효성 검사
+### 4단계: 최종 정리 및 점검 (4일차)
 
-### 5단계: 테스트 및 최적화 (6주차)
+- [ ] 적절한 대체 텍스트(alt) 제공
+- [ ] 키보드 접근성 확인
+- [ ] CSS 최적화 (중복 코드 제거 등)
+- [ ] 코드 주석 추가 및 정리
+- [ ] 모바일/데스크톱 환경에서 최종 테스트
+- [ ] 웹 성능 최적화 (이미지 최적화, 불필요한 코드 제거 등)
+- [ ] 시맨틱 태그 활용 검증
 
-- [ ] 크로스 브라우저 테스트
-- [ ] 웹 접근성 검증
-- [ ] 성능 최적화
-- [ ] 배포 및 문서화
+## 와이어프레임 / UI
 
-## 🎨 화면 설계도
+### 데스크톱 | 모바일 버전
 
-### 데스크톱 버전
-
-![데스크톱 화면 설계도](./images/desktop-design.gif)
-
-### 모바일 버전
-
-![모바일 화면 설계도](./images/mobile-design.gif)
-
-### 반응형 동작 데모
-
-![반응형 동작 데모](./images/responsive-demo.gif)
+<!-- ![데스크톱 화면 설계도](./images/desktop-design.gif) -->
 
 > **참고**: 위 GIF 파일들은 프로젝트의 실제 화면 설계도와 반응형 동작을 보여줍니다. 각 이미지를 클릭하면 더 큰 화면으로 확인할 수 있습니다.
 
@@ -135,24 +129,6 @@ HODU는 고양이 테마의 브랜드 랜딩 페이지로, 사용자 친화적�
 ```bash
 git clone https://github.com/chaehyeon119/2025-project-hodu-landing-page.git
 cd 2025-project-hodu-landing-page
-```
-
-2. 로컬 서버 실행
-
-```bash
-# Python 3
-python -m http.server 8000
-
-# 또는 Node.js
-npx serve .
-
-# 또는 Live Server (VS Code 확장)
-```
-
-3. 브라우저에서 확인
-
-```
-http://localhost:8000
 ```
 
 ## 🌐 배포 링크
@@ -245,7 +221,7 @@ html {
 ### 1. 모바일 우선 접근법
 
 - 기본 스타일은 모바일 기준
-- `@media screen and (min-width: 577px)` 로 데스크톱 스타일 적용
+- `@media screen and (min-width: 576px)` 로 데스크톱 스타일 적용
 
 ### 2. 유연한 레이아웃
 
@@ -379,19 +355,8 @@ padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 
 - 이미지 최적화 및 적절한 포맷 선택
 - CSS와 JavaScript 파일 분리로 유지보수성 향상
-- 불필요한 리플로우/리페인트 최소화
 
-## 라이선스
-
-이 프로젝트는 MIT 라이선스 하에 배포됩니다.
-
-## 기여하기
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## 참고자료
 
 ## 🔗 링크
 
@@ -400,4 +365,4 @@ padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 
 ---
 
-**참고**: 이 프로젝트는 [weniv/project_sample_repo](https://github.com/weniv/project_sample_repo)를 참고하여 제작되었습니다.
+**참고**: 이 프로젝트는 [모두의연구소/위니브] 프론트엔드 스쿨의 HTML/CSS 프로젝트입니다.
