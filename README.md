@@ -215,7 +215,6 @@ html {
       <input type="email" id="email" name="email" required />
       <button type="submit" role="button">구독하기</button>
     </form>
-    <button class="close-btn" role="button" aria-label="모달 닫기">×</button>
   </div>
 </div>
 
@@ -414,7 +413,7 @@ padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 
 ## 개발하며 느낀점
 
-### 1. CSS 선택자 우선순위의 중요성
+### 1. CSS Custom Properties 사용의 편리함
 
 - 명확한 선택자 구조로 스타일 충돌 방지
 - CSS Custom Properties로 일관성 있는 디자인 시스템 구축
