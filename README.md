@@ -201,7 +201,45 @@ html {
 - `<header>`, `<main>`, `<footer>` 태그 활용
 - `<nav>`, `<section>`, `<article>` 등 의미있는 태그 사용
 
-### 2. 스크린 리더 지원
+### 2. HTML Role 속성 활용
+
+**WAI-ARIA Role 속성을 통한 웹 접근성 향상:**
+
+```html
+<!-- 모달에 role 속성 적용 -->
+<div id="myModal" class="modal" role="dialog" aria-labelledby="modal-title">
+  <div class="modal-content">
+    <h2 id="modal-title" class="a11y-hidden">구독 모달</h2>
+    <form role="form" aria-describedby="subscribe-help">
+      <label for="email">이메일 주소</label>
+      <input type="email" id="email" name="email" required />
+      <button type="submit" role="button">구독하기</button>
+    </form>
+    <button class="close-btn" role="button" aria-label="모달 닫기">×</button>
+  </div>
+</div>
+
+<!-- 네비게이션에 role 속성 적용 -->
+<nav role="navigation" aria-label="메인 네비게이션">
+  <ul role="menubar">
+    <li role="menuitem"><a href="#home">Home</a></li>
+    <li role="menuitem"><a href="#about">About</a></li>
+  </ul>
+</nav>
+```
+
+**적용된 Role 속성들:**
+
+- **`role="dialog"`**: 모달 창의 역할을 명시하여 스크린 리더가 모달임을 인식
+- **`role="form"`**: 폼 요소의 역할을 명확히 하여 접근성 향상
+- **`role="button"`**: 버튼 요소의 역할을 명시
+- **`role="navigation"`**: 네비게이션 영역임을 명시
+- **`role="menubar"`, `role="menuitem"`**: 메뉴 구조를 명확히 하여 키보드 네비게이션 지원
+- **`aria-labelledby`**: 모달 제목과 연결
+- **`aria-describedby`**: 폼 설명과 연결
+- **`aria-label`**: 버튼의 목적을 명확히 설명
+
+### 3. 스크린 리더 지원
 
 - `aria-labelledby`, `aria-describedby` 속성으로 연결
 
@@ -217,7 +255,7 @@ html {
 }
 ```
 
-### 3. 이미지 대체 텍스트
+### 4. 이미지 대체 텍스트
 
 ```html
 <!-- 갤러리 이미지들 - 구체적인 설명 -->
@@ -401,7 +439,6 @@ padding: clamp(12px, 2.2vw, 32px) clamp(16px, 4vw, 32px);
 
 - 단순한 오류 검출을 넘어서 클린 코드 작성과 코드 품질 향상에 큰 도움을 받음
 - 타인의 관점에서 발견할 수 있는 문제점과 개선사항을 학습할 수 있음
-
 
 **피드백 적용 사례**:
 `fonts/` 폴더를 생성하면 성능 최적화 및 더욱 체계적 관리 가능
